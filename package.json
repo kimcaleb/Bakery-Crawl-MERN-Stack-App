@@ -4,7 +4,8 @@
   "description": "**You’ve come a long way, and it's time to show it.** This will be your most advanced project to date, and it'll hopefully be the shining beacon of bragging rights for your portfolio as you make your way out into the world.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,0 +1,11 @@
+Google Places API to find bakeries neaby or Yelp API. 
+React-leaf.js maps to create routes(your crawl)
+
+Bakery-Crawl. 
+
+
+APIs needed for this app:
+Leaflet API to display map of current location showing the set of bakery routes. 
+Geolcation API to obtain user's current location. 
+Google Places API to obtain set of random bakeries for a user to go to. 
+Google Photos API to show images of bakeries. 
