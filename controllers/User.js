@@ -36,6 +36,7 @@ module.exports = {
                 res.json({message:"Success", payload:{updatedUser,token}});
             });
         });
+        
     },
 
     destroy: (req,res) => {
@@ -43,15 +44,18 @@ module.exports = {
             if(err) return res.json({message:"Error", payload:null, code:err.code});
             res.json({message:"Success", user});
         })
+        //handle logic for updating crawl. 
     },
 
     authenticate: (req,res) => {
+        console.log("hit")
         let { email, password } = req.body;
         User.findOne( { email }, (err,user) => {
             if(err) return res.json({message:"Error", payload:null, code:err.code});
             if(!user || !user.validPassword(password)) {
                 return res.json({message:"Error", message:"Invalid Credentials"});
             }
+            console.log("hit")
             const token = signToken(user);
             res.json({message:"Success", token});
         });

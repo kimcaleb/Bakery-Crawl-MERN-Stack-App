@@ -5,7 +5,7 @@ const
         name: {type:String, require:true},
         email: {type:String, require:true, unique:true},
         password: {type:String, require:true},
-        crawls: [{type:mongoose.Types.ObjectId, ref: "Crawl"}]
+        crawls: [{type:mongoose.Schema.Types.ObjectId, ref: "Crawl"}]
     }, {timestamps:true});
 
 userSchema.methods.generateHash = function(password) {
