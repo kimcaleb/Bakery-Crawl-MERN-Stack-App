@@ -23,7 +23,7 @@ function verifyToken(req,res,next) {
             if(!user) return res.json({success:false, message:"User Not Found"});
             req.user = user;
             next();
-        })
+        });
     });
 }
 

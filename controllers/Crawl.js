@@ -1,12 +1,6 @@
-const Crawl = require("../models/Crawl");
-
-crawlsRouter.use(verifyToken);
-crawlsRouter.get("/", Crawl.index); // This will be rendered on a page where user can look at all the crawls added/completed by users. 
-crawlsRouter.get("/:id", Crawl.show);
-//Only when the user has completed a crawl, will we be able to create this crawl document.
-crawlsRouter.post("/", Crawl.create); // Here we will first create the crawl, add the user's id to that crawls user id(ref) array (make sure to save the crawl because we essentially updated the crawl right after we created it). Then we add the crawl's id to the User's crawl array. Then save it because we essentailly updated the user. 
-crawlsRouter.patch("/:id", Crawl.update); // This endpoint will only be pinged when a different user sees a crawl that has been added/completed by another user and wants to do that crawl. The button will be something like "do this crawl", which will ping this endpoint. We need a way to send that crawl's id.
-
+const 
+    Crawl = require("../models/Crawl"),
+    User = require("../models/User");
 
 module.exports = {
     index: (req,res) => {
@@ -23,12 +17,42 @@ module.exports = {
         });
     },
 
-    update: (req,res) => {
-        
-        //also need to handle logic for adding a user or deleting a user. 
-    },
-
     create: (req,res) => {
-        //handle user authentication. Only want users logged in to create. 
+        Crawl.create(req.body, (err,newCrawl) => {
+            if(err) return res.json({message:"Failed To Create Crawl", err});
+            // res.json({message:"Successfully Created New Crawl"});
+            //Push the users id into the created crawl's users array. 
+            newCrawl.users.push(req.user.id);
+            newCrawl.save(err => {
+                // if it successfully saves, push the crawls's id into the user's crawls array
+                User.findById(req.user.id, (err,user) => {
+                    if(err) return res.json({message:"Failed to Find User After Creating Crawl",err});
+                    user.crawls.push(newCrawl._id);
+                    user.save(err => {
+                        if(err) console.log("Unsuccessfully saved User");
+                        console.log("Successfully added User to Crawls and Vice Versa");
+                        res.json({message:"Success", crawl});
+                    });
+                });
+
+            });
+        });
     },
+// This endpoint will only be pinged when a different user sees a crawl that has been added/completed by another user and wants to do that crawl. The button will be something like "do this crawl", which will ping this endpoint. We need a way to send that crawl's id.
+    update: (req,res) => {
+        Crawl.findById(req.params.id, (err,crawl) => {
+            if(err) return res.json({message:"Could Not Reteive Crawl", err});
+            crawl.users.push(req.user.id);
+            crawl.save(err => {
+                User.findById(req.user.id, (err,user) => {
+                    if(err) return res.json({message:"User Not Found After Updating Crawl", err});
+                    user.crawls.push(crawl._id);
+                    user.save(err => {
+                        if(err) return res.json({message:"Unsuccessful in Saving User", err});
+                        res.json({crawl});
+                    });
+                });
+            });
+        });
+    }
 }
