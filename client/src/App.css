@@ -73,7 +73,7 @@ form {
   justify-content: flex-end;
   align-items: center;
 }
-.navtext:hover {
+.nav-link:hover {
   text-decoration: underline;
 }
 .nav {
