@@ -6,10 +6,26 @@ export default class Home extends Component {
         user:null
     }
 
+    //Returns User Information
     componentDidMount() {
         axios.get(`/api/users/${this.props.currentUser._id}`)
             .then(res => {
                 this.setState({user:res.data.payload});
             });
+    }
+
+    render() {
+        let { user } = this.state;
+        if(user) {
+            <div className="hero">
+                <h1>Create Crawl</h1>
+            </div>
+        } else {
+            return(
+                <div>
+                    <h1>Create Crawl</h1>
+                </div>
+            );
+        }
     }
 }
