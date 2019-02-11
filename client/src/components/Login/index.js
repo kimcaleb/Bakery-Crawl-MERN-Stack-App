@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import httpClient from "../../utilities/index";
+import { Link } from "react-router-dom";
 
 export default class Login extends Component {
     state = {
@@ -42,7 +43,11 @@ export default class Login extends Component {
                                     placeholder="Password"
                                     onChange={this.handleChange}
                                     value={password} />
+                                <input className="btn" type="submit" value="Sign In" />
                             </form>
+                            <Link to="/signup">
+                                <input className="btn" type="submit" value="Sign Up" />
+                            </Link>
                         </div>
                     </div>
                 </div>
