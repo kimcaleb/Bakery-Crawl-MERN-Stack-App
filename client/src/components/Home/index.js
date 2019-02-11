@@ -17,9 +17,11 @@ export default class Home extends Component {
     render() {
         let { user } = this.state;
         if(user) {
-            <div className="hero">
-                <h1>Create Crawl</h1>
-            </div>
+            return(
+                <div className="hero">
+                    <h1>Create Crawl</h1>
+                </div>
+            );
         } else {
             return(
                 <div>

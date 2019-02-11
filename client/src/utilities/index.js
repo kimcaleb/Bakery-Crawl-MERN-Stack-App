@@ -24,6 +24,7 @@ httpClient.authenticate = async function(credentials, url) {
         const token = res.data.token;
         if(token) {
             this.defaults.headers.common.token = this.setToken(token);
+            return jwtDecode(token);
         } else {
             return false;
         }

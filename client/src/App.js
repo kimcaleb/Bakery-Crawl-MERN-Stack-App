@@ -4,6 +4,8 @@ import { Switch, Route } from "react-router-dom";
 import httpClient from "./utilities/index";
 import Layout from "./components/Layout";
 import Login from "./components/Login";
+import Home from "./components/Home";
+import SignUp from "./components/Signup";
 
 
 
@@ -24,17 +26,20 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-     
+    return (    
         <Switch>
-          <Route exact path="/" render={(props => {
+          <Route exact path="/" render={props => {
             return <Login {...props} onLoginSuccess={this.onAuthSuccess} />
-          })} />
+          }} />
+          <Route path="/signup" render={props => {
+            return <SignUp {...props} onSignupSuccess={this.onAuthSuccess} />
+          }} />
           <Layout currentUser={this.state.currentUser}>
-            
+              <Route path="/profile" render={props => {
+                return <Home {...props} currentUser={this.state.currentUser} />
+              }} />
           </Layout>
-        </Switch>
-      
+        </Switch>     
     );
   }
 }
