@@ -25,13 +25,16 @@ export default class App extends Component {
 
   render() {
     return (
-      <Layout currentUser={this.state.currentUser}>
+     
         <Switch>
           <Route exact path="/" render={(props => {
             return <Login {...props} onLoginSuccess={this.onAuthSuccess} />
           })} />
+          <Layout currentUser={this.state.currentUser}>
+            
+          </Layout>
         </Switch>
-      </Layout>
+      
     );
   }
 }
