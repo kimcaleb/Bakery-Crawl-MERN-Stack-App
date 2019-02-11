@@ -6,7 +6,8 @@ import Layout from "./components/Layout";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import SignUp from "./components/Signup";
-import Logout from "./components//Logout";
+import Logout from "./components/Logout";
+import Edit from "./components/Edit";
 
 
 
@@ -41,6 +42,9 @@ export default class App extends Component {
           <Layout currentUser={this.state.currentUser}>
               <Route path="/profile" render={props => {
                 return <Home {...props} currentUser={this.state.currentUser} />
+              }} />
+              <Route exact path="/profile/edit" render={props => {
+                return <Edit {...props} currentUser={this.state.currentUser} onLoginSuccess={this.onAuthSuccess} logOut={this.logOut} />
               }} />
           </Layout>
         </Switch>     

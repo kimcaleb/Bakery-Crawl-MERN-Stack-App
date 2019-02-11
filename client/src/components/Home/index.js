@@ -24,7 +24,7 @@ export default class Home extends Component {
             );
         } else {
             return(
-                <div>
+                <div className="hero">
                     <h1>Create Crawl</h1>
                 </div>
             );

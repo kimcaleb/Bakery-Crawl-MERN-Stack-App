@@ -12,7 +12,7 @@ h1 {
   2px 2px 0 black;
 }
 
-h2 {
+h2, h3 {
   text-shadow:
   -2px -2px 0 black,
   2px -2px 0 black,
@@ -73,7 +73,7 @@ form {
   justify-content: flex-end;
   align-items: center;
 }
-.nav-link:hover {
+.hover:hover {
   text-decoration: underline;
 }
 .nav {
@@ -129,8 +129,24 @@ a:hover {
   1px 1px 0 black;
   font-family: 'Volkhov', cursive;
   color: white;
-  margin-bottom:-5px;
+  margin-bottom: -5px;
+  margin-top: 5px;
+  font-size: 22px; 
+}
+
+/*Edit Profile*/
+.editinput {
+  width:150%;
   margin-top:5px;
-  font-size:22px;
-  
+}
+
+label {
+  text-shadow:
+  -1px -1px 0 black,
+  1px -1px 0 black,
+  -1px 1px 0 black,
+  1px 1px 0 black;
+  font-family: 'Volkhov', cursive;
+  color:white;
+  margin-bottom:-3px;
 }

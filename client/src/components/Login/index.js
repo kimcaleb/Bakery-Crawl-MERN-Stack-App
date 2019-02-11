@@ -19,6 +19,8 @@ export default class Login extends Component {
         if (user) {
             this.props.onLoginSuccess();
             this.props.history.push('/profile');
+        } else {
+            alert("Invalid Credentials");
         }
     }
 

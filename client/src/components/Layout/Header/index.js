@@ -9,10 +9,10 @@ export default() => {
             </div>
             <div className='float-right'>      
                 <span className='navtext'>
-                    <Link className='nav-link' to='/profile'>Home</Link>
-                    <Link className='nav-link' to='/browse'>Popular</Link>
-                    <Link className='nav-link' to='/profile/edit'>Edit Profile</Link>
-                    <Link className='nav-link' to='/logout'>Logout</Link>
+                    <Link className='nav-link hover' to='/profile'>Home</Link>
+                    <Link className='nav-link hover' to='/browse'>Popular</Link>
+                    <Link className='nav-link hover' to='/profile/edit'>Edit Profile</Link>
+                    <Link className='nav-link hover' to='/logout'>Logout</Link>
                 </span>        
             </div>
       </nav>

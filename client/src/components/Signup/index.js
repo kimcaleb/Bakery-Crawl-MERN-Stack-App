@@ -57,9 +57,9 @@ export default class SignUp extends Component {
                                  <input className="btn" type="submit" />
                                  <h5 className="or">or</h5>                                                                         
                             </form>
-                                 <Link to="/">
-                                    <input className="btn" type="submit" value="Sign In" />
-                                </Link>
+                            <Link to="/">
+                                <input className="btn" type="submit" value="Sign In" />
+                            </Link>
                         </div>
                     </div> 
                 </div>
