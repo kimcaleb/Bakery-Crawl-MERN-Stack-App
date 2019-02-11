@@ -41,7 +41,7 @@ module.exports = {
 
     destroy: (req,res) => {
         User.findByIdAndRemove(req.params.id, (err, user) => {
-            if(err) return res.json({message:"Error", payload:null, code:err.code});
+            if(err) return res.json({message:"Error", user:null, code:err.code});
             res.json({message:"Success", user});
         })
         //handle logic for updating crawl. 
