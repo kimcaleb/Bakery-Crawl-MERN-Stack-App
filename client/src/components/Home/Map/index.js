@@ -7,13 +7,15 @@ import destinations from "./destination.svg"
 
 const myIcon = L.icon({
     iconUrl: userLocation,
-    iconSize:[50,82]
+    iconSize:[50,80]
 });
 
 const destinationIcon = L.icon({
     iconUrl: destinations,
-    iconSize:[50,82]
+    iconSize:[50,80]
 });
+
+
 
 export default class Map1 extends Component {
     state = {
@@ -23,20 +25,20 @@ export default class Map1 extends Component {
         },
         bakeries: [],
         haveBakeryPositions: false,
-        zoom:5
+        zoom:15
     }
 
 
     render() {
         let position = [this.state.location.lat,this.state.location.lng];
+        
         return(
-            <div className="map">
-                
-                <Map className="map" center={position} worldCopyJump={true} zoom={this.state.zoom}>
-                    <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <div className="map">                
+                <Map className="map" center={position} worldCopyJump={true} zoom={this.state.zoom} zoomControl={false}>
+                    <TileLayer                        
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"  />
                      <Marker position={position} icon={myIcon}>
-                        <Popup>Hello</Popup>
+                        <Popup>Current Location</Popup>
                      </Marker>
                 </Map>
             </div>
