@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Map from "./Map";
 
 export default class Home extends Component {
     state ={
@@ -20,6 +21,7 @@ export default class Home extends Component {
             return(
                 <div className="hero">
                     <h1>Create Crawl</h1>
+                    <Map />
                 </div>
             );
         } else {
