@@ -20,12 +20,19 @@ const destinationIcon = L.icon({
 export default class Map1 extends Component {
     state = {
         location: {
-            lat: 34.009399,
-            lng: -118.497360
+            lat: "",
+            lng: ""
         },
         bakeries: [],
         haveBakeryPositions: false,
         zoom:15
+    }
+
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition(position => {
+            let {coords: {latitude, longitude} } = position;
+            this.setState({location:{lat:latitude,lng:longitude}});
+        });
     }
 
 
@@ -38,7 +45,7 @@ export default class Map1 extends Component {
                     <TileLayer                        
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"  />
                      <Marker position={position} icon={myIcon}>
-                        <Popup>Current Location</Popup>
+                        <Popup>You Are Here</Popup>
                      </Marker>
                 </Map>
             </div>
