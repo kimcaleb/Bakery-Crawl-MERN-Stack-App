@@ -7,6 +7,7 @@ const
     mongoose = require("mongoose"),
     bodyParser = require("body-parser"),
     usersRouter = require("./routes/User"),
+    axios = require("axios"),
     crawlsRouter = require("./routes/Crawl");
 
 //Database
@@ -25,6 +26,13 @@ app.get("/", (req,res) => {
     res.json({message:"API root"})
 })
 app.use("/api/crawls", crawlsRouter);
+
+//3rd Party APIs
+app.get("/places", (req,res) => {
+    axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${GOOGLE_API_KEY}&location=${req.query.lat},${req.query.lng}&radius=10000&type=bakery`).then( ({data}) => {
+        res.json({data})
+    }).catch(err => {console.log(err)});
+});
 
 
 

@@ -15,12 +15,17 @@ export default class Home extends Component {
             });
     }
 
+    handleSubmit = async (e) => {
+        e.preventDefault();
+
+    }
+
     render() {
         let { user } = this.state;
         if(user) {
             return(
                 <div className="hero">
-                    <h1>Create Crawl</h1>
+                    <h1 className="areyouready">Are You Ready?</h1>
                     <Map />
                 </div>
             );
