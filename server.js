@@ -8,7 +8,8 @@ const
     bodyParser = require("body-parser"),
     usersRouter = require("./routes/User"),
     axios = require("axios"),
-    crawlsRouter = require("./routes/Crawl");
+    crawlsRouter = require("./routes/Crawl"),
+    path = require("path");
 
 //Database
 mongoose.connect(MONGODB_URI, {useNewUrlParser:true} ,(err) => {
@@ -18,6 +19,7 @@ mongoose.connect(MONGODB_URI, {useNewUrlParser:true} ,(err) => {
 //Middleware
 app.use(bodyParser.json());
 app.use(logger("dev"));
+app.use(express.static(path.join(__dirname,"client","build")));
 
 
 //Routes
@@ -35,7 +37,9 @@ app.get("/places", (req,res) => {
 });
 
 
-
+app.get("*", (req,res) => {
+    res.sendFile(path.join(__dirname,"client","build","index.html"));
+}); 
 
 
 //App Listen On
