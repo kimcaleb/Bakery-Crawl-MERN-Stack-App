@@ -29,6 +29,10 @@ A full stack application that allows users to create a bakery crawl, have the ba
 ## Wireframes
 ![WireFram1](https://i.imgur.com/tmnXVoC.jpg)
 ![WireFram1](https://i.imgur.com/H45g50o.jpg)
+
+## Trello
+![WireFram1](https://i.imgur.com/wWJFkAz.png)
+
 ### Landing Page
 ![landing page](https://i.imgur.com/P7oQJQO.png)
 
