@@ -27,8 +27,8 @@ A full stack application that allows users to create a bakery crawl, have the ba
 * [GitHub] (https://github.com/kimcaleb/Bakery-Crawl-MERN-Stack-App)
 * [Trello] (https://trello.com/b/HWTTK9Wp/project-5-wdi)
 ## Wireframes
-![WireFram1] (https://i.imgur.com/tmnXVoC.jpg)
-![WireFram1] (https://i.imgur.com/H45g50o.jpg)
+![WireFram1](https://i.imgur.com/tmnXVoC.jpg)
+![WireFram1](https://i.imgur.com/H45g50o.jpg)
 ### Landing Page
 ![landing page](https://i.imgur.com/P7oQJQO.png)
 
