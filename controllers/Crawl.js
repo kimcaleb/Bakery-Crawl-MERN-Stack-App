@@ -18,23 +18,24 @@ module.exports = {
     },
 
     create: (req,res) => {
+
         Crawl.create(req.body, (err,newCrawl) => {
+            console.log(req.body);
             if(err) return res.json({message:"Failed To Create Crawl", err});
-            // res.json({message:"Successfully Created New Crawl"});
-            //Push the users id into the created crawl's users array. 
-            newCrawl.users.push(req.user.id);
+            //Push the users id into the created crawl's users array.
+            console.log(newCrawl); 
+            newCrawl.users.push(req.user._id);
             newCrawl.save(err => {
                 // if it successfully saves, push the crawls's id into the user's crawls array
-                User.findById(req.user.id, (err,user) => {
+                User.findById(req.user._id, (err,user) => {
                     if(err) return res.json({message:"Failed to Find User After Creating Crawl",err});
                     user.crawls.push(newCrawl._id);
                     user.save(err => {
                         if(err) console.log("Unsuccessfully saved User");
                         console.log("Successfully added User to Crawls and Vice Versa");
-                        res.json({message:"Success", crawl});
+                        res.json({message:"Success", newCrawl});
                     });
                 });
-
             });
         });
     },
@@ -42,7 +43,7 @@ module.exports = {
     update: (req,res) => {
         Crawl.findById(req.params.id, (err,crawl) => {
             if(err) return res.json({message:"Could Not Reteive Crawl", err});
-            crawl.users.push(req.user.id);
+            crawl.users.push(req.user._id);
             crawl.save(err => {
                 User.findById(req.user.id, (err,user) => {
                     if(err) return res.json({message:"User Not Found After Updating Crawl", err});

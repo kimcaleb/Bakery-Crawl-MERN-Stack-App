@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import SignUp from "./components/Signup";
 import Logout from "./components/Logout";
 import Edit from "./components/Edit";
+import Crawls from "./components/Crawls";
 
 
 
@@ -45,6 +46,9 @@ export default class App extends Component {
               }} />
               <Route exact path="/profile/edit" render={props => {
                 return <Edit {...props} currentUser={this.state.currentUser} onLoginSuccess={this.onAuthSuccess} logOut={this.logOut} />
+              }} />
+              <Route path="/crawls" render={props => {
+                return <Crawls {...props} currentUser={this.state.currentUser} />
               }} />
           </Layout>
         </Switch>     

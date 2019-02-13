@@ -67,6 +67,20 @@ httpClient.logOut = function() {
     return true;
 }
 
+//Handles Adding Crawl to Database. 
+httpClient.addCrawl = async function(credentials, url) {
+    try{
+        let res = await this({method:"post", url, data:credentials});
+        if(res.data.newCrawl) {
+            return res.data.newCrawl;
+        } else {
+            alert("Failed to add Crawl");
+        }
+    } catch(err) {
+        console.log(err);
+    }
+}
+
 //During initial app load, attempt to set a localStorage stored token as a default header for all api requests. 
 httpClient.defaults.headers.common.token = httpClient.getToken();
 export default httpClient;

@@ -14,5 +14,6 @@ usersRouter.use(verifyToken); // The verifyToken method will always be called in
 usersRouter.get("/:id", User.show);
 usersRouter.patch("/:id", User.update);
 usersRouter.delete("/:id", User.destroy);
+usersRouter.get("/:id/crawls", User.getCrawls);
 
 module.exports = usersRouter;

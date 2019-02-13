@@ -1,8 +1,7 @@
 const   
     mongoose = require("mongoose"),
     crawlSchema = new mongoose.Schema({
-        bakeries: [{type:String}], // This will contain the places' id. 
-        reviews: [{type:String}], //Stretch Goal
+        bakeries: [{type:Object}], // This will contain the places' id. 
         users: [{type:mongoose.Schema.Types.ObjectId, ref: "User"}]
     }, {timestamps:true});
 

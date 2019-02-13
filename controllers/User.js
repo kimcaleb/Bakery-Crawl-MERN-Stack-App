@@ -59,5 +59,12 @@ module.exports = {
             const token = signToken(user);
             res.json({message:"Success", token});
         });
+    },
+    getCrawls: (req,res) => {
+        User.findById(req.params.id).populate("crawls").exec((err,user) => {
+            if(err) return res.json({message:"Could Not Retrieve User"});
+            res.json({message:"Retrieved Users Retrieved", user})
+        });
     }
+    
 }

@@ -12,6 +12,7 @@ export default() => {
                     <Link className='nav-link hover' to='/profile'>Home</Link>
                     <Link className='nav-link hover' to='/browse'>Popular</Link>
                     <Link className='nav-link hover' to='/profile/edit'>Edit Profile</Link>
+                    <Link className='nav-link hover' to='/crawls'>History</Link>
                     <Link className='nav-link hover' to='/logout'>Logout</Link>
                 </span>        
             </div>
